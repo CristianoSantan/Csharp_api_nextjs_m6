@@ -26,6 +26,15 @@ namespace booki_api.Controllers
         public async Task<ActionResult<IEnumerable<Usuarios>>> GetUsuarios()
         {
             return await _context.Usuarios.ToListAsync();
+            // Aqui você pode substituir este código por uma chamada ao seu banco de dados ou qualquer outra lógica de negócios.
+            //var exemplos = new List<Usuarios>
+            //{
+              //  new Usuarios { Id = 1, Nome = "David", Email = "david@email" },
+               // new Usuarios { Id = 2, Nome = "Maria", Email = "maria@email" },
+               // new Usuarios { Id = 3, Nome = "José", Email = "jose@email" }
+            //};
+
+            //return Ok(exemplos);
         }
 
         // GET: api/Usuarios/5

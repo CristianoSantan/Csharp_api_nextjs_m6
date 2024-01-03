@@ -9,7 +9,7 @@ const ClientList2 = () => {
   useEffect(() => {
     // Faça uma chamada GET para a API Spring Boot
     axios
-      .get("https://localhost:7222/api/Usuarios")
+      .get("http://bookiapi.somee.com/api/Usuarios")
       .then((response) => {
         setClients(response.data);
       })

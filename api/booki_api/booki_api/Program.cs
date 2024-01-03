@@ -1,5 +1,7 @@
 using booki_api.Context;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,10 +14,10 @@ builder.Services.AddSwaggerGen();
 
 
 // Conexão com banco de dados
-string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+string SqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
+    options.UseSqlServer(SqlConnection));
 
 // Cors
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -29,6 +31,11 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowAnyHeader();  
         });
+});
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new RequestCulture(CultureInfo.InvariantCulture);
 });
 
 var app = builder.Build();
