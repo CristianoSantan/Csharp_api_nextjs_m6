@@ -1,7 +1,5 @@
-using booki_api.Context;
-using Microsoft.AspNetCore.Localization;
+using api_booki.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +9,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 // Conexão com banco de dados
 string SqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -29,13 +26,8 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins("*")
             .AllowAnyMethod()
-            .AllowAnyHeader();  
+            .AllowAnyHeader();
         });
-});
-
-builder.Services.Configure<RequestLocalizationOptions>(options =>
-{
-    options.DefaultRequestCulture = new RequestCulture(CultureInfo.InvariantCulture);
 });
 
 var app = builder.Build();
