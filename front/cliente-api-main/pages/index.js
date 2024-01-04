@@ -6,17 +6,17 @@ import style from '../styles/Home.module.css'
 const ClientList2 = () => {
   const [clients, setClients] = useState([]);
 
-  useEffect(() => {
-    // Faça uma chamada GET para a API Spring Boot
-    axios
-      .get("http://apibooki.somee.com/api/Usuarios")
-      .then((response) => {
-        setClients(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar a lista de Categorias:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // Faça uma chamada GET para a API Spring Boot
+  //   axios
+  //     .get("http://apibooki.somee.com/api/Usuarios")
+  //     .then((response) => {
+  //       setClients(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Erro ao buscar a lista de Categorias:", error);
+  //     });
+  // }, []);
 
   return (
     <div>
@@ -31,7 +31,7 @@ const ClientList2 = () => {
             <th>Senha</th>
           </tr>
         </thead>
-        {clients.map((element) => (
+        {/* {clients.map((element) => (
             <tbody key={element.categoriaId}>
               <tr className={style.tabela}>
                 <td>{element.id}</td>
@@ -40,7 +40,7 @@ const ClientList2 = () => {
                 <td>{element.senha}</td>
               </tr>
             </tbody>
-          ))}
+          ))} */}
       </table>
     </div>
   );
