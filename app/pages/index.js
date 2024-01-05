@@ -7,30 +7,18 @@ import styles from '@/styles/Home.module.css'
 export default function Home() {
   const [clients, setClients] = useState([]);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get('http://apibooki.somee.com/api/Usuarios');
-  //     setClients(response.data);
-  //   } catch (error) {
-  //     console.error('Erro ao buscar dados: >>', error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://apibooki.somee.com/api/Usuarios');
+      setClients(response.data);
+    } catch (error) {
+      console.error('Erro ao buscar dados: >> ', error);
+    }
+  };
 
   useEffect(() => {
-    // Faça uma chamada GET para a API
-    axios
-      .get("http://apibooki.somee.com/api/Usuarios")
-      .then((response) => {
-        setClients(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar a lista de Categorias:", error);
-      });
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <>
