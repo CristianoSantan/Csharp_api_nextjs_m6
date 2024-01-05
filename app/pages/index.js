@@ -1,10 +1,24 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
+import axios from "axios";
 import styles from '@/styles/Home.module.css'
 
 export default function Home() {
   const [clients, setClients] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://apibooki.somee.com/api/Usuarios');
+      setClients(response.data);
+    } catch (error) {
+      console.error('Erro ao buscar dados: >>', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   // useEffect(() => {
   //   // Faça uma chamada GET para a API
@@ -38,7 +52,7 @@ export default function Home() {
                 <th>Senha</th>
               </tr>
             </thead>
-            {/* {clients.map((element) => (
+            {clients.map((element) => (
                 <tbody key={element.id}>
                   <tr className={styles.tabela}>
                     <td>{element.id}</td>
@@ -47,7 +61,7 @@ export default function Home() {
                     <td>{element.senha}</td>
                   </tr>
                 </tbody>
-              ))} */}
+              ))}
           </table>
         </div>
       </main>
