@@ -1,4 +1,4 @@
-import "bootstrap/dist/css/bootstrap.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import style from '../styles/Home.module.css'
